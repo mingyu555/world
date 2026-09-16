@@ -1,0 +1,542 @@
+<title>A·G·D는 어디에 있는가</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Noto+Serif+KR:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root {
+  color-scheme: light;
+  --surface:        #fcfcfb;
+  --surface-sunk:   #f4f4f1;
+  --surface-raise:  #ffffff;
+  --rule:           #e0e0da;
+  --rule-strong:    #c9c9c1;
+  --ink:            #14140f;
+  --ink-2:          #52514e;
+  --ink-3:          #7d7c76;
+  --accent:         #2a78d6;
+  --accent-soft:    #e8f0fb;
+  --pos:            #2a78d6;
+  --neg:            #e34948;
+  --mid:            #f0efec;
+  --good:           #0ca30c;
+  --crit:           #d03b3b;
+  --serif: "Newsreader", "Noto Serif KR", ui-serif, Georgia, serif;
+  --mono: "IBM Plex Mono", "Noto Sans KR", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface:        #1a1a19;
+    --surface-sunk:   #121211;
+    --surface-raise:  #232322;
+    --rule:           #35352f;
+    --rule-strong:    #4b4b43;
+    --ink:            #f4f4ef;
+    --ink-2:          #c3c2b7;
+    --ink-3:          #8f8e85;
+    --accent:         #3987e5;
+    --accent-soft:    #16263a;
+    --pos:            #3987e5;
+    --neg:            #e66767;
+    --mid:            #383835;
+    --good:           #0ca30c;
+    --crit:           #e06a6a;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface:        #1a1a19;
+  --surface-sunk:   #121211;
+  --surface-raise:  #232322;
+  --rule:           #35352f;
+  --rule-strong:    #4b4b43;
+  --ink:            #f4f4ef;
+  --ink-2:          #c3c2b7;
+  --ink-3:          #8f8e85;
+  --accent:         #3987e5;
+  --accent-soft:    #16263a;
+  --pos:            #3987e5;
+  --neg:            #e66767;
+  --mid:            #383835;
+  --good:           #0ca30c;
+  --crit:           #e06a6a;
+}
+
+body { background: var(--surface); color: var(--ink); font-family: var(--serif);
+       font-size: 17px; line-height: 1.75; word-break: keep-all; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 40px 24px 96px; }
+h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 600; line-height: 1.25;
+     letter-spacing: -0.02em; margin: 0 0 12px; text-wrap: balance; }
+h2 { font-family: var(--mono); font-size: 12.5px; font-weight: 600; letter-spacing: 0.1em;
+     text-transform: uppercase; color: var(--accent); margin: 0 0 5px; }
+h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 8px;
+     line-height: 1.45; text-wrap: balance; }
+p { margin: 0 0 15px; max-width: 44em; }
+a { color: var(--accent); }
+code, .m { font-family: var(--mono); font-size: 0.86em; font-variant-numeric: tabular-nums; }
+strong { font-weight: 600; }
+.lede { font-size: 19px; line-height: 1.7; color: var(--ink-2); max-width: 38em; margin: 0 0 28px; }
+
+.meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+        gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+        margin: 0 0 44px; }
+.meta div { background: var(--surface); padding: 10px 12px; }
+.meta dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em;
+           text-transform: uppercase; color: var(--ink-3); margin: 0 0 3px; }
+.meta dd { font-family: var(--mono); font-size: 13px; margin: 0; color: var(--ink);
+           line-height: 1.5; }
+
+section { margin: 0 0 54px; }
+section > header { border-top: 1px solid var(--rule-strong); padding-top: 10px;
+                   margin-bottom: 18px; display: flex; gap: 14px; align-items: baseline; }
+section > header .n { font-family: var(--mono); font-size: 12px; color: var(--ink-3);
+                      flex: 0 0 auto; padding-top: 3px; }
+section > header .t { flex: 1 1 auto; }
+
+.tbl { overflow-x: auto; margin: 0 0 16px; }
+table { border-collapse: collapse; font-family: var(--mono); font-size: 13px;
+        font-variant-numeric: tabular-nums; width: 100%; }
+th, td { text-align: right; padding: 7px 11px; border-bottom: 1px solid var(--rule);
+         white-space: nowrap; }
+th { font-weight: 600; font-size: 11px; letter-spacing: 0.04em;
+     color: var(--ink-3); border-bottom: 1px solid var(--rule-strong); }
+th:first-child, td:first-child { text-align: left; }
+td.wrap-ko { white-space: normal; max-width: 30em; line-height: 1.6; }
+tbody tr:last-child td { border-bottom: none; }
+td.hi { color: var(--ink); font-weight: 600; }
+td.dim { color: var(--ink-3); }
+td.no { color: var(--crit); font-weight: 600; }
+caption { caption-side: bottom; text-align: left; font-family: var(--serif);
+          font-size: 14.5px; color: var(--ink-2); padding-top: 10px; line-height: 1.7;
+          max-width: 44em; }
+
+.note { border-left: 2px solid var(--accent); background: var(--accent-soft);
+        padding: 13px 16px; margin: 0 0 18px; }
+.note.bad { border-left-color: var(--crit); background: color-mix(in oklab, var(--crit) 9%, var(--surface)); }
+.note.ok  { border-left-color: var(--good); background: color-mix(in oklab, var(--good) 9%, var(--surface)); }
+.note p:last-child { margin-bottom: 0; }
+.note .lab { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em;
+             text-transform: uppercase; color: var(--ink-3); display: block; margin-bottom: 5px; }
+
+figure { margin: 0 0 20px; }
+figcaption { font-size: 14.5px; color: var(--ink-2); line-height: 1.7; margin-top: 10px;
+             max-width: 44em; }
+.chart { background: var(--surface-sunk); border: 1px solid var(--rule);
+         padding: 16px 14px 12px; overflow-x: auto; }
+.legend { display: flex; align-items: center; gap: 8px; font-family: var(--mono);
+          font-size: 11.5px; color: var(--ink-2); margin-top: 10px; flex-wrap: wrap; }
+.ramp { display: inline-block; height: 9px; width: 96px; border: 1px solid var(--rule-strong); }
+svg { display: block; }
+svg text { font-family: var(--mono); }
+
+ul { max-width: 44em; padding-left: 20px; margin: 0 0 15px; }
+li { margin-bottom: 9px; }
+.files { display: grid; grid-template-columns: repeat(auto-fit, minmax(275px, 1fr)); gap: 1px;
+         background: var(--rule); border: 1px solid var(--rule); }
+.files div { background: var(--surface); padding: 10px 12px; }
+.files b { font-family: var(--mono); font-size: 12.5px; font-weight: 600; display: block;
+           margin-bottom: 2px; }
+.files span { font-size: 14.5px; color: var(--ink-2); line-height: 1.6; }
+footer { border-top: 1px solid var(--rule-strong); padding-top: 14px; font-size: 14.5px;
+         color: var(--ink-3); line-height: 1.7; }
+</style>
+
+<div class="wrap">
+
+<h1>A·G·D는 어디에 있는가</h1>
+<p class="lede">Cosmos-Predict2-2B의 28개 block에서 appearance·geometry·dynamics의 자리를
+찾으려 두 가지 설계로 측정했다. 데이터셋 캡션으로 한 첫 설계는 교란된 답을 줬고,
+어구 길이를 토큰 단위로 맞춘 최소대비 설계가 그것을 대부분 뒤집었다.
+그리고 블록 입력을 고정해 누적을 제거하니 한 번 더 뒤집혔다.
+<strong>D는 후반 cross-attention(L20–L26)에, A는 L3 한 곳에, G는 어디에도 없다.</strong></p>
+
+<dl class="meta">
+  <div><dt>Model</dt><dd>Cosmos-Predict2-2B<br>Video2World (frozen)</dd></div>
+  <div><dt>DiT</dt><dd>28 block · 2048 · 1.956 B</dd></div>
+  <div><dt>설정</dt><dd>기준 프롬프트 3종<br>× 조건 이미지 3종</dd></div>
+  <div><dt>조건</dt><dd>기준 + factor 4어구 × 3<br>+ filler 4어구 = 17</dd></div>
+  <div><dt>관측 step</dt><dd>0·4·8·12·16<br>20·24·28·32 / 35</dd></div>
+  <div><dt>날짜</dt><dd>2026-09-09</dd></div>
+</dl>
+
+<section>
+  <header><span class="n">01</span><div class="t"><h2>두 설계</h2>
+  <h3>첫 설계가 준 답은 대부분 문장 차이였다</h3></div></header>
+  <p>처음에는 데이터셋(<code>agd_dataset</code>)의 캡션을 그대로 썼다. AGD 캡션에서 factor
+  어구를 지운 것을 참조로 삼아 "A를 뺐을 때 어느 block이 다르게 반응하는가"를 물었다.
+  문제는 그 어구들이 factor 말고도 여러 가지가 달랐다는 것이다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>교란</th><th>실측</th></tr></thead>
+    <tbody>
+      <tr><td class="wrap-ko">어구 길이가 다르다</td><td class="wrap-ko">A 14 토큰 · G 17 · D 14</td></tr>
+      <tr><td class="wrap-ko">구문이 다르다</td><td class="wrap-ko">A/G는 전치사구, D는 동사구</td></tr>
+      <tr><td class="wrap-ko">주어가 ego가 아닌 캡션</td><td class="wrap-ko">100개 중 24개 (밴, 보행자, "the camera")</td></tr>
+      <tr><td class="wrap-ko">factor 라벨과 어구가 불일치</td><td class="wrap-ko">100개 중 38개</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note bad"><span class="lab">첫 설계가 무효화한 기존 결과</span>
+  <p><code>scene-0014_f16</code> — 기존 <code>cosmos_exp</code> 실험이 모두 사용한 샘플 — 의
+  GD 캡션에 appearance 어구가 남아 있다. GD는 "A 제거"의 참조인데 실제로는 AGD의 어순만
+  바꾼 것이고, 측정된 "+A" 효과는 <strong>어순 효과</strong>다. 기존
+  <code>GD→AGD</code> divergence(<code>Dz_rel</code> 0.575)는 appearance를 재고 있지 않다.
+  깨끗한 샘플은 100개 중 63개다.</p></div>
+</section>
+
+<section>
+  <header><span class="n">02</span><div class="t"><h2>최소대비 설계</h2>
+  <h3>기준 문장 하나에 4토큰짜리 어구만 갈아끼운다</h3></div></header>
+  <p>모델은 전 과정에서 <strong>frozen</strong>이다. 가중치를 건드리지 않고, 기준 프롬프트로
+  궤적을 한 번 돌린 뒤 관측 step마다 그 latent에서 프롬프트만 바꿔 각 block이 residual에
+  쓰는 값을 비교한다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>그룹</th><th>어구 4개</th><th>추가 토큰</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td class="wrap-ko">in the rain · in the fog · in the dark · in the snow</td><td>+4</td></tr>
+      <tr><td>G</td><td class="wrap-ko">on the left · on the right · at the junction · toward the exit</td><td>+4</td></tr>
+      <tr><td>D</td><td class="wrap-ko">braking hard · speeding up · slowing down · turning sharply</td><td>+4</td></tr>
+      <tr><td>filler</td><td class="wrap-ko">in the video · in the clip · in the frame · in the shot</td><td>+4</td></tr>
+    </tbody>
+    <caption><code>effect(어구, l, b) = ‖delta_어구(l,b) − delta_기준(l,b)‖ / ‖h_l‖</code>.
+    factor마다 어구를 <strong>4개</strong> 둔 이유는, 1개면 "그 단어에 반응하는 layer"밖에
+    못 묻기 때문이다. 4개면 "A 어구 <em>아무거나</em>에 반응하고 G·D 어구에는 반응하지 않는
+    layer"를 물을 수 있다. <strong>filler</strong>는 길이와 구문이 같고 factor 내용만 없는
+    대조군이다 — plan §10이 요구하지만 한 번도 돌지 않았던 통제다.
+    <br><br>첫 최소대비 실행에서는 G 어구가 6토큰이었고, geometry가 이긴 9칸 중 7칸이
+    factor가 아니라 <strong>토큰 수</strong>를 따라갔다(r = 0.51~0.86). 그래서 모든 어구를
+    정확히 +4로 다시 맞췄다.</caption>
+  </table></div>
+  <p>판정에는 두 조건을 동시에 요구한다. <strong>(1)</strong> 각 (layer, branch) 칸에서
+  그룹 라벨을 20,000번 섞는 순열 F 검정을 통과하고(84칸 BH-FDR, q ≤ 0.10),
+  <strong>(2)</strong> 기준 문장과 조건 이미지가 다른 세 설정 <em>모두</em>에서 같은 factor가
+  최대여야 한다. 한 설정에서만 유의한 칸은 그 문장이나 그 이미지의 성질이다.</p>
+</section>
+
+<section>
+  <header><span class="n">03</span><div class="t"><h2>결과</h2>
+  <h3>G는 없고, A는 전역이고, D만 국소화된다</h3></div></header>
+  <p>가장 먼저 볼 것은 layer가 아니다. <strong>factor가 출력 공간에 존재하는가</strong>다.
+  같은 그룹의 네 어구가 출력을 공통 방향으로 움직이는지를, 다른 그룹과의 코사인 차이로 본다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>그룹</th><th>그룹 내</th><th>그룹 간</th><th>마진</th><th>설정별 마진</th></tr></thead>
+    <tbody>
+      <tr><td>D</td><td>0.630</td><td>0.387</td><td class="hi">+0.244</td><td>+0.268 · +0.242 · +0.221</td></tr>
+      <tr><td>filler</td><td>0.589</td><td>0.380</td><td>+0.210</td><td>+0.214 · +0.169 · +0.246</td></tr>
+      <tr><td>A</td><td>0.606</td><td>0.402</td><td>+0.204</td><td>+0.204 · +0.243 · +0.165</td></tr>
+      <tr><td>G</td><td>0.466</td><td>0.409</td><td class="no">+0.056</td><td>+0.103 · −0.008 · +0.074</td></tr>
+    </tbody>
+    <caption><strong>D만 filler를 넘는다.</strong> 그리고 D의 네 어구는 공통 토큰이 하나도
+    없다 — 응집이 어휘가 아니라 의미에서 온다는 뜻이다. <strong>A는 filler와 같은 수준</strong>이고,
+    A의 네 어구는 모두 <code>in the X</code> 꼴이므로 그 응집은 구문에서 온다.
+    <strong>G는 사실상 0</strong>이고 한 설정에서는 음수다 — 네 geometry 어구가 출력을 공통
+    방향으로 움직이지 않는다.</caption>
+  </table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>branch</th><th>A</th><th>G</th><th>D</th><th>filler</th><th>F</th><th>p</th><th>factor/filler</th></tr></thead>
+    <tbody>
+      <tr><td>attn1 (self)</td><td class="hi">1.135</td><td class="no">0.897</td><td>0.972</td><td>0.853</td><td>10.94</td><td class="hi">0.0007</td><td>1.17×</td></tr>
+      <tr><td>ff</td><td class="hi">1.161</td><td class="no">0.931</td><td>1.000</td><td>0.908</td><td>9.10</td><td class="hi">0.0008</td><td>1.14×</td></tr>
+      <tr><td>attn2 (텍스트)</td><td>1.065</td><td>0.970</td><td>1.034</td><td>0.931</td><td>2.80</td><td class="dim">0.0924</td><td>1.10×</td></tr>
+    </tbody>
+    <caption>layer 평균, 설정별 평균으로 정규화한 값(1.0 = 그 칸의 전체 평균). 그룹 분리가
+    유의한 branch는 <strong>attn1과 ff</strong>이고 <strong>attn2는 유의하지 않다</strong>.
+    세 branch 모두에서 A가 최대이며, <strong>G는 attn1·ff에서 filler와 같은 수준</strong>이다.</caption>
+  </table></div>
+  <p>세 설정 모두에서 같은 factor가 이긴 칸은 47개다. <strong>A가 42칸</strong>으로 L1부터
+  L27까지 전 구간에 퍼져 있고(filler 대비 +22~111%), <strong>G는 0칸</strong>,
+  <strong>D는 5칸</strong>인데 그중 <strong>4칸이 attn2</strong>(L2·L20·L23·L24)다.
+  A는 특정 layer가 아니라 전역 변조로 작동하고, D만 자리를 갖는다.</p>
+</section>
+
+<section>
+  <header><span class="n">03b</span><div class="t"><h2>이미지도 학습도 없이</h2>
+  <h3>프롬프트만으로 layer별 분석이 된다</h3></div></header>
+  <p>텍스트가 DiT에 들어오는 통로는 block마다 <code>attn2.to_k</code>와
+  <code>attn2.to_v</code> 딱 두 개다. 둘 다 T5 출력에만 작용하므로</p>
+  <div class="tbl"><table><tbody>
+    <tr><td class="wrap-ko"><code>K_l = norm_k(to_k_l(T5(프롬프트)))</code> &nbsp;
+        <code>V_l = to_v_l(T5(프롬프트))</code></td></tr>
+  </tbody></table></div>
+  <p>는 <strong>프롬프트만으로 계산된다</strong> — 조건 이미지도, latent도, denoising step도,
+  파인튜닝도 개입하지 않는다. 같은 17개 프롬프트를 T5에 넣고 28개 block의 K·V 투영을 통과시켜,
+  실제 토큰(패딩 제외)의 평균 벡터를 기준 프롬프트 대비로 본 뒤, 그룹 응집 마진
+  (그룹 내 코사인 − 그룹 간 코사인)에서 filler 그룹의 마진을 뺀다. 2분이면 끝난다.</p>
+  <figure>
+    <div class="chart" id="chart-text"></div>
+    <div class="legend"><span>filler 뺀 순 응집 마진</span><span>−0.3</span>
+      <span class="ramp" id="ramp-txt"></span><span>+0.3</span></div>
+    <figcaption><strong>V(값)는 A를 전 layer에서 통과시키고</strong>(+0.15~+0.24),
+    G는 0 근처에 둔다. <strong>K(키)는 후반 L20–L26에서 G와 D를 분리한다</strong>
+    (G +0.21~+0.30, D +0.19~+0.26)는데 A는 평탄하다(+0.13~+0.15). cross-attention에서
+    K는 "어디를 볼지", V는 "무엇을 가져올지"를 정하므로, <strong>A는 값으로 실려 오고
+    G·D는 후반 키로 구분된다.</strong>
+    <br><br>L27의 큰 값(+0.50~+0.58)은 factor 신호가 아니다 — 그 layer에서 filler 그룹의
+    마진이 −0.383으로 붕괴해 분모 쪽이 커진 것이다.</figcaption>
+  </figure>
+  <div class="tbl"><table>
+    <thead><tr><th>층위</th><th>필요한 것</th><th>A</th><th>G</th><th>D</th></tr></thead>
+    <tbody>
+      <tr><td class="wrap-ko">T5 출력<br><span class="dim">정보가 있는가</span></td><td>프롬프트만</td>
+          <td class="hi">+0.215</td><td class="no">−0.006</td><td class="hi">+0.106</td></tr>
+      <tr><td class="wrap-ko">V 투영<br><span class="dim">값으로 실리는가</span></td><td>프롬프트만</td>
+          <td class="hi wrap-ko">전 layer<br>+0.15~+0.24</td><td class="no">≈0</td>
+          <td class="wrap-ko">+0.08~+0.18</td></tr>
+      <tr><td class="wrap-ko">K 투영<br><span class="dim">키로 구분되는가</span></td><td>프롬프트만</td>
+          <td class="wrap-ko">평탄 +0.14</td><td class="hi wrap-ko">L20–L26<br>+0.21~+0.30</td>
+          <td class="hi wrap-ko">L20–L26<br>+0.19~+0.26</td></tr>
+      <tr><td class="wrap-ko">활성 write<br><span class="dim">실제로 작동하는가</span></td>
+          <td class="wrap-ko">+ 조건 이미지</td>
+          <td class="hi">L3</td><td class="no">없음</td><td class="hi">L20–L26</td></tr>
+    </tbody>
+    <caption><strong>D는 사슬이 이어진다</strong> — T5에 정보가 있고(+0.106), 후반 K가 그것을
+    분리하고(L20–L26), 실제로 그 자리에서 write가 일어난다(L20–L26). 세 층위가 같은 구간을
+    가리키는 유일한 factor다.
+    <br><br><strong>G는 사슬이 끊긴다</strong> — 후반 K가 차선 단어를 분리하기는 하는데
+    (+0.30), write가 전혀 나오지 않는다. 정보가 키에는 읽히지만 쓰이지 않는다. T5 출력의
+    평균 벡터 응집이 filler 수준(−0.006)인 것도 같은 방향이다.
+    <br><br><strong>A는 층위가 어긋난다</strong> — 값으로는 전 layer에서 실려 오는데
+    (V +0.15~+0.24) write는 L3 한 곳이다. 정보가 어디서나 읽히지만 쓰는 곳은 앞쪽뿐이다.</caption>
+  </table></div>
+</section>
+
+<section>
+  <header><span class="n">04</span><div class="t"><h2>누적을 제거하면</h2>
+  <h3>국소화된 것은 A가 아니라 D였다</h3></div></header>
+  <p>블록 <em>l</em>의 write 차이에는 두 가지가 섞여 있다. 그 블록이 텍스트를 다르게
+  처리한 것과, 그 블록의 <em>입력</em>이 이미 L0–L(<em>l</em>−1)에서 갈라져 있던 것.
+  <code>z_t</code>가 같으므로 L0에서는 두 스트림의 입력이 완전히 같지만, L10쯤이면 물려받은
+  차이가 커진다.</p>
+  <p>그래서 같은 측정을 한 번 더 돌리면서 <strong>모든 블록의 입력을 기준 스트림 것으로
+  강제 교체</strong>했다. 그러면 모든 블록이 같은 입력을 받고 텍스트만 다르므로, write 차이가
+  그 블록의 처리만 남는다.</p>
+  <div class="note ok"><span class="lab">두 개의 통제가 맞다</span>
+  <p>기준 프롬프트를 자기 스트림에 이식해 다시 돌리면 write 차이가 세 설정 모두에서
+  <code>0.00e+00</code>이다. 그리고 <strong><code>attn1</code>이 전 layer에서 정확히 0</strong>이
+  된다 — 자기 어텐션은 텍스트 입력이 없고 블록 안에서 <code>attn2</code>보다 앞에 있으므로,
+  입력을 고정하면 텍스트에 반응할 통로가 없다. 앞 절에서 A가 <code>attn1</code>에서 유의했던
+  것(p=0.0007)은 <strong>전부 누적</strong>이었다. <code>ff</code>는 0이 아닌데, 같은 블록 안에서
+  텍스트 → <code>attn2</code> → <code>ff</code>로 전파되기 때문이다.</p></div>
+  <div class="tbl"><table>
+    <thead><tr><th>factor</th><th>누적 포함</th><th>누적 제거</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td class="wrap-ko"><strong>42칸</strong>, L1~L27 전역</td>
+          <td class="hi wrap-ko"><strong>5칸</strong> — attn2/L3(+112%), ff/L3(+60%), ff/L9, attn2·ff/L27</td></tr>
+      <tr><td>G</td><td class="wrap-ko">0칸</td><td class="no wrap-ko">0칸</td></tr>
+      <tr><td>D</td><td class="wrap-ko">5칸</td>
+          <td class="hi wrap-ko"><strong>14칸</strong> — attn2·ff의 <strong>L20~L26 연속 블록</strong> + L5, L2</td></tr>
+    </tbody>
+    <caption>A의 전역성은 초반 layer 효과가 하류로 실려간 것이었고, 누적을 걷어내면
+    <strong>L3 한 곳</strong>으로 좁혀진다. 반대로 D는 늘어나 연속 블록을 이룬다.
+    branch 평균도 뒤집혀 <code>attn2</code>에서 D가 최대(1.072 vs A 1.036 vs filler 0.928,
+    p=0.0485)다.</caption>
+  </table></div>
+  <figure>
+    <div class="chart" id="chart-steplayer"></div>
+    <div class="legend"><span>filler 대비 마진</span><span>−40%</span>
+      <span class="ramp" id="ramp-div"></span><span>+80%</span>
+      <span style="color:var(--ink-3)">· 칸에 마우스를 올리면 값</span></div>
+    <figcaption>누적을 제거한 뒤의 filler 대비 마진(%), <code>attn2</code>와 <code>ff</code>의
+    평균. 가로가 block, 세로가 denoising step이다. <strong>A는 L3</strong>에 9개 step 전부에서
+    고정돼 있고(최대 +131%, step 8), <strong>D는 L20·L24와 L4·L5</strong>에 역시 전 step
+    고정돼 있다(최대 +74%). 앞 절에서 본 "A가 step 8 이후 감소"는 누적분의 감쇠였다 —
+    두 factor 모두 자리가 timestep에 안정적이다.</figcaption>
+  </figure>
+  <p>단 <strong>출력 공간 응집은 누적 제거 런에서 읽을 수 없다.</strong> 매 블록에 기준 h를
+  넣으면 스트림이 끊겨 최종 출력이 정상적인 모델 예측이 아니다. 그 질문에는 §03의 값
+  (D +0.244 &gt; filler +0.210 ≈ A +0.204 &gt; G +0.056)이 유효하다.</p>
+</section>
+
+<section>
+  <header><span class="n">05</span><div class="t"><h2>학습 후 가중치</h2>
+  <h3>LoRA expert 8개는 layer를 가리지 못했다</h3></div></header>
+  <p>여기까지는 모두 frozen 모델의 활성이다. 별도로 rank-16 LoRA를 448개 block 모듈 전체에
+  균일하게 붙여 A·G·D와 <strong>base 캡션 대조군</strong>을 seed 2개씩 학습시켰다. seed가
+  같으면 샘플 순서·sigma 추첨·노이즈가 동일하므로 <code>ΔW_f − ΔW_base</code>는 정확히
+  짝지어진 차분이고 일반 파인튜닝 성분이 구조적으로 상쇄된다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>질문</th><th>근거</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td class="wrap-ko">factor가 노이즈 위에 흔적을 남기는가</td>
+          <td class="wrap-ko">비결정성만으로는 attn2에서 cos 0.827 유지, factor를 바꾸면 0.588, base 대비 0.464 — 조건이 올바른 순서로 정렬</td>
+          <td class="hi">예</td></tr>
+      <tr><td class="wrap-ko">어느 layer인가</td>
+          <td class="wrap-ko">집계 방식을 바꾸면 결과가 뒤집힌다 (아래)</td>
+          <td class="no">미확립</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note bad"><span class="lab">집계가 결과를 만든다</span>
+  <p>layer × group 값을 낼 때 모듈을 합치는 방법이 두 가지다. <strong>(a)</strong> 모듈마다
+  <code>‖ΔW_f − ΔW_base‖ / ‖ΔW_base‖</code>를 구해 더하거나, <strong>(b)</strong> 분자를 더한
+  뒤 분모 합으로 나누거나. (a)는 base가 거의 움직이지 않은 모듈을 과대 가중하는데, 그 분모가
+  <code>norm2.linear_1</code>에서 layer 간 <strong>540배</strong> 차이 난다(L16 0.00084 ~ L27 0.456).</p>
+  <p>layer 10의 norm2에서 A의 비중은 (a)에서 <code>51.0%</code>, (b)에서 <code>35.3%</code>이고
+  (b)에서는 승자가 A가 아니라 G다. 168칸 중 "seed 재현 + 비중 ≥40%"를 만족하는 칸은 (a)에서
+  10건이 모두 adaLN 계열에 몰리지만 <strong>(b)에서는 1건</strong>이다. (a)로 보이던 adaLN
+  집중은 집계가 만든 인공물이다.</p></div>
+  <p>병목은 학습 예산이다. sigma를 통제한 loss 개선은 252 step에서 <strong>−2.0%</strong>이며
+  (raw 전후 비교의 −44%는 거의 전부 어떤 sigma가 추첨됐는지의 효과), caption이 학습 손실에서
+  차지하는 비중은 <strong>0.147%</strong>다. 부수적으로, 같은 seed를 다른 GPU에서 돌리면 loss
+  궤적은 1.2e-3만 다른데 어댑터는 cos 0.842로 벌어진다 — Adam이 수치 노이즈를 큰 가중치
+  발산으로 증폭하므로, 축 C의 모든 비교는 같은 seed·같은 장치여야 한다.</p>
+</section>
+
+<section>
+  <header><span class="n">06</span><div class="t"><h2>정정</h2>
+  <h3>교란된 설계가 준 답들</h3></div></header>
+  <div class="tbl"><table>
+    <thead><tr><th>이전 주장</th><th>근거였던 것</th><th>현재</th></tr></thead>
+    <tbody>
+      <tr><td class="wrap-ko">판별 신호는 attn2에만 있다</td>
+          <td class="wrap-ko">데이터셋 캡션에서 factor 간 layer 프로파일 상관이 attn1·ff 0.98 vs attn2 0.31~0.73</td>
+          <td class="no wrap-ko">틀림. 통제 설계에서는 attn1(p=0.0007)·ff(p=0.0008)이 유의하고 attn2는 0.092. 단 <strong>D는 attn2</strong></td></tr>
+      <tr><td class="wrap-ko">A → L9~11</td><td class="wrap-ko">local_div와 gradient의 차분 상위 layer</td>
+          <td class="no wrap-ko">틀림. 누적 제거 후 A는 <strong>L3</strong> 한 곳</td></tr>
+      <tr><td class="wrap-ko">A는 전역 변조다</td><td class="wrap-ko">누적 포함 측정에서 42/84칸 유의</td>
+          <td class="no wrap-ko">틀림. 블록 입력을 고정하면 5칸으로 줄고 attn1은 정확히 0</td></tr>
+      <tr><td class="wrap-ko">G → L20~24</td><td class="wrap-ko">같음</td>
+          <td class="no wrap-ko">틀림. 토큰을 맞추면 G는 어디에도 없다</td></tr>
+      <tr><td class="wrap-ko">D는 가장 약한 factor</td><td class="wrap-ko">write 최저, local_div 국소화 실패</td>
+          <td class="hi wrap-ko">틀림. 깨끗한 대비에서 <strong>유일하게 의미적으로 실재하고 국소화됨</strong></td></tr>
+      <tr><td class="wrap-ko">학습 후 ΔW가 adaLN에 집중된다</td><td class="wrap-ko">모듈별로 정규화한 뒤 합산한 값</td>
+          <td class="no wrap-ko">틀림. 크기 가중으로 바꾸면 10건 → 1건</td></tr>
+    </tbody>
+  </table></div>
+  <p>D가 오래 약해 보인 이유는 데이터셋의 D 어구가
+  <code>drives forward, then slows down and comes to a stop and speeds up</code>처럼
+  복잡했기 때문일 가능성이 크다. <code>braking hard</code> 같은 짧은 어구는 확실히 작동한다.
+  반대로 G가 잡히지 않는 것은 plan H1의 전제와 맞고, MagicDrive 계열이 geometry를 텍스트가
+  아니라 BEV·3D box로 넣는 이유와도 맞는다.</p>
+</section>
+
+<section>
+  <header><span class="n">07</span><div class="t"><h2>한계</h2>
+  <h3>이 결과가 아직 말하지 못하는 것</h3></div></header>
+  <ul>
+    <li><strong>어구 4개는 factor가 아니다.</strong> A는 전부 날씨·조명이고 G는 전부 측방·분기점이다. factor의 다른 측면(차량 색, 차선 위상)은 검정되지 않았다.</li>
+    <li><strong>구문이 완전히 맞지 않는다.</strong> A와 filler는 <code>in the X</code>, G는 <code>on/at/toward the X</code>, D는 동사구다. 토큰 수는 맞췄지만 구문은 아니다.</li>
+    <li><strong>A가 42/84칸에서 유의한 것은 국소화가 아니다.</strong> FDR q≤0.10에서 절반 이상의 칸이 통과했다는 것은 "A가 거의 모든 곳에 영향을 준다"는 뜻이며, 그 자체로는 배치 근거가 되지 못한다.</li>
+    <li><strong>G의 부재는 이 어구 집합에 대한 것이다.</strong> 더 강한 geometry 표현(차선 수, 위상)으로 다시 검정해야 "모델이 텍스트 geometry를 못 쓴다"고 말할 수 있다.</li>
+    <li><strong>축 C는 timestep을 분해할 수 없다.</strong> 학습이 sigma를 무작위로 뽑아 섞으므로 ΔW 하나에 모든 timestep이 합쳐져 있다. timestep별 expert를 원하면 sigma 구간별로 따로 학습시켜야 한다.</li>
+  </ul>
+  <div class="note"><span class="lab">다음</span>
+  <p>배치 후보는 두 개로 정리됐다. <strong>D → attn2·ff의 L20~L26</strong>(14칸, 세 설정
+  재현, 전 timestep 안정, 출력 공간에서 유일하게 filler를 넘음)과 <strong>A → L3</strong>
+  (마진 +112%로 전체 최대). 둘 다 <code>attn1</code>은 대상이 아니다 — 텍스트 통로가 없다.
+  G는 텍스트 조건으로 실재하는지부터 다시 확인해야 한다.</p>
+  <p>축 C를 다시 할 근거도 하나 생겼다. nuScenes 키프레임은 2 Hz라 16 fps 체크포인트와
+  8배 어긋났지만, <strong>Waymo 카메라는 10 Hz</strong>이고 Cosmos-Predict2에는
+  <code>model-720p-10fps.pt</code> 변형이 있다 — 불일치가 사라진다. 이 서버에
+  <code>with_camera_labels</code> 세그먼트 8개(7.6 GB)가 있고, 20초 × 10 Hz = 200 프레임이라
+  93 프레임 클립을 세그먼트당 2개 뽑을 수 있다. 다만 diffusers 형식 변환과 세그먼트 추가
+  확보가 선행 조건이다.</p></div>
+</section>
+
+<section>
+  <header><span class="n">08</span><div class="t"><h2>코드</h2>
+  <h3>공유 트리에서 읽기만 하고, 쓰지 않는다</h3></div></header>
+  <div class="files">
+    <div><b>block_patch.py</b><span>Cosmos block forward의 계측 사본. branch별 residual delta를 기록·치환·비교</span></div>
+    <div><b>minimal_pair_probe.py</b><span>최소대비 측정 — 기준 1개 + 어구 16개, 어구 길이 검증 포함</span></div>
+    <div><b>aggregate_minpair.py</b><span>설정 통합 순열 F 검정, FDR, timestep 분해</span></div>
+    <div><b>text_only_probe.py</b><span>프롬프트만으로 T5 출력·K·V 층위의 factor 응집 (이미지·학습 불필요)</span></div>
+    <div><b>weight_effect_probe.py</b><span>학습된 ΔW 의 step 별 효과 <code>‖ΔW·x_t‖/‖W·x_t‖</code>, 쌍차 지원</span></div>
+    <div><b>local_div_probe.py</b><span>branch별 layer-local divergence와 참조 방향 Gram</span></div>
+    <div><b>factor_layer_probe.py</b><span>teacher-forced activation patching (첫 설계)</span></div>
+    <div><b>grad_probe.py</b><span>factor 대비 gradient leverage</span></div>
+    <div><b>lora_train.py · weight_delta_analysis.py</b><span>축 C — expert 학습과 ΔW 판독</span></div>
+    <div><b>test_block_patch.py · test_analyze_smoke.py</b><span>모델 가중치 없이 도는 정확성 테스트. 둘 다 통과</span></div>
+  </div>
+</section>
+
+<footer>Cosmos-Predict2-2B-Video2World · 28 block · text encoder t5-11b (4.898 B, frozen) ·
+VAE Wan2.1 (0.127 B) · 분석 코드는 <code>~/cvpr2027_world</code>, 가중치와 데이터셋은
+<code>/mnt/ssd4/youngjae/cvpr2027_yj</code>에서 읽기 전용.</footer>
+
+</div>
+
+<script>
+const TXT = {"T5": {"A": 0.2155, "G": -0.0064, "D": 0.1057}, "KV": {"K": {"A": [0.1474, 0.2036, 0.1454, 0.1215, 0.1461, 0.0964, 0.1305, 0.1053, 0.1271, 0.1888, 0.1238, 0.1894, 0.1515, 0.1446, 0.13, 0.1039, 0.1407, 0.1443, 0.1289, 0.1381, 0.0981, 0.0921, 0.1394, 0.0425, 0.1464, 0.1265, 0.1919, -0.1059], "G": [0.1218, 0.158, 0.1961, 0.1242, 0.0941, 0.0931, 0.0957, 0.0536, 0.0956, 0.1047, 0.0428, 0.1155, 0.0702, 0.0874, 0.0749, 0.0209, 0.0776, 0.0646, 0.0911, 0.1236, 0.2067, 0.2213, 0.3003, 0.2153, 0.2184, 0.2239, 0.3011, 0.0162], "D": [0.0913, 0.0718, 0.168, 0.1007, 0.1064, 0.0661, 0.091, 0.0658, 0.0731, 0.1134, 0.0581, 0.1305, 0.1049, 0.0898, 0.0823, 0.0747, 0.0917, 0.0933, 0.1095, 0.1292, 0.1872, 0.1717, 0.2382, 0.1891, 0.1851, 0.178, 0.2596, 0.0261]}, "V": {"A": [0.2092, 0.1937, 0.2061, 0.1432, 0.1981, 0.2086, 0.2375, 0.1915, 0.2132, 0.1955, 0.1874, 0.2162, 0.2044, 0.1936, 0.1683, 0.1787, 0.1536, 0.1453, 0.1701, 0.1643, 0.2078, 0.2285, 0.0625, 0.2004, 0.107, 0.1589, 0.2256, 0.5775], "G": [-0.0043, 0.0563, 0.023, -0.0624, 0.0048, 0.0829, 0.0146, 0.0252, 0.0333, 0.0093, 0.0264, 0.0367, 0.0113, 0.0166, -0.0013, -0.0071, -0.0005, -0.0147, 0.0772, 0.0804, 0.1294, 0.1246, -0.1678, 0.1213, 0.0497, 0.1097, 0.1541, 0.4969], "D": [0.1522, 0.1791, 0.0831, 0.0449, 0.0866, 0.1389, 0.1187, 0.1317, 0.0876, 0.1286, 0.0867, 0.1266, 0.0783, 0.1115, 0.1035, 0.1142, 0.1094, 0.0866, 0.161, 0.155, 0.1847, 0.1857, -0.0349, 0.1656, 0.1056, 0.14, 0.1684, 0.5345]}}};
+const FIG = {"steps": [0, 4, 8, 12, 16, 20, 24, 28, 32], "A": [[45.8, 9.8, -14.4, 61.0, 104.8, 29.6, 0.8, -31.4, 16.6, 38.6, -15.5, -0.4, 8.4, 4.8, -4.9, -11.6, -1.5, 8.1, 20.9, 20.2, 9.6, 11.8, 9.9, -7.4, 3.2, 0.5, 8.3, 15.5], [43.0, 10.4, -16.8, 112.0, 82.6, 24.2, 15.5, -3.8, 20.6, 35.2, -1.4, 19.4, 5.2, -12.8, -0.3, -2.2, -8.9, 1.0, 15.9, 23.8, 11.6, 16.5, 11.4, -7.6, 1.9, 7.2, 9.3, 24.8], [36.5, 0.2, -1.4, 131.4, 56.9, 18.8, 8.6, 9.6, 21.4, 32.6, 2.1, 20.2, 7.1, -3.8, -4.8, -5.9, -8.7, -7.1, 19.2, 25.8, 13.2, 19.8, 10.9, -9.3, 2.7, 5.6, 11.8, 29.2], [28.2, -5.5, 3.4, 119.9, 38.8, 16.8, 0.5, 15.6, 22.8, 24.3, 8.0, 12.7, 8.6, 5.0, -4.0, -5.4, -5.5, -7.8, 19.5, 23.6, 12.8, 17.9, 10.8, -12.6, 1.6, 2.4, 11.3, 30.2], [16.2, 1.5, 4.5, 96.6, 25.4, 16.5, 1.1, 21.0, 24.8, 17.8, 16.2, 6.1, 5.3, 10.5, -0.7, -2.1, -4.7, -1.4, 14.3, 17.5, 10.4, 13.0, 9.9, -16.4, -1.3, -4.4, 10.2, 27.9], [-4.2, 9.7, 3.1, 69.1, 18.6, 19.6, 0.6, 19.2, 26.8, 13.8, 19.4, 3.5, 4.8, 16.5, -1.7, 1.9, -4.4, -3.8, 14.3, 14.3, 9.4, 9.0, 7.9, -18.2, -4.4, -7.6, 8.8, 25.2], [-32.7, 7.5, 8.2, 55.4, 18.7, 21.7, -3.8, 15.2, 28.4, 11.6, 16.8, 3.7, 1.6, 24.6, -5.2, 3.2, -3.8, -6.2, 21.6, 12.4, 9.1, 10.0, 5.8, -18.2, -7.2, -6.2, 6.4, 17.6], [11.4, -2.0, 6.6, 69.6, 15.2, 21.4, -2.2, 13.8, 27.7, 22.2, 8.0, 7.0, -2.9, 17.3, -10.3, 6.7, -2.8, -10.6, 27.0, 0.2, 6.8, 3.4, 4.9, -20.6, -9.1, 2.4, 3.6, 15.1], [24.2, 1.0, 9.3, 79.7, 21.8, 14.5, -2.6, 15.0, 25.4, 17.9, 5.8, 9.7, -7.3, 18.3, -11.9, 12.0, -1.5, -11.1, 31.6, -1.6, 5.4, 3.2, 3.8, -22.5, -9.3, 8.6, 1.4, 16.4]], "D": [[62.4, 51.1, 13.5, -1.0, 55.4, 36.0, 20.6, -5.9, 34.2, 9.6, 3.9, 15.0, 52.4, 40.2, 26.0, 12.0, 18.0, 8.6, 5.0, 35.0, 59.8, 36.8, 10.6, 21.9, 47.7, 14.4, 15.4, -12.9], [61.6, 31.0, 8.2, 5.6, 48.4, 37.3, 21.8, -9.2, 5.0, 7.4, 13.4, 23.6, 14.4, 15.6, 13.4, 15.9, -9.4, 10.0, 5.4, 34.5, 59.3, 35.2, 9.4, 21.1, 43.4, 22.7, 11.6, -20.6], [51.6, 18.2, 13.0, 6.6, 34.6, 36.8, 6.6, -18.7, -4.2, -7.2, 9.4, 19.6, 11.0, 19.5, 2.8, 10.0, -10.4, 13.4, 8.0, 33.8, 62.1, 35.2, 7.9, 22.4, 41.2, 22.0, 14.2, -17.4], [33.2, 10.4, 8.0, -1.4, 33.6, 36.4, -4.0, -20.0, -6.6, -11.4, 7.0, 16.3, 14.1, 22.5, -0.3, 9.5, -5.1, 10.3, 13.4, 32.3, 64.0, 35.2, 7.6, 22.4, 40.6, 19.2, 12.2, -17.0], [11.5, 13.4, 5.8, -10.0, 52.1, 40.3, -8.3, -22.8, -6.6, -11.1, 2.5, 11.2, 10.6, 21.8, 0.4, 6.4, -2.8, 9.3, 21.8, 32.1, 66.4, 35.5, 7.0, 21.1, 38.8, 12.6, 9.4, -13.9], [-4.6, 12.0, -0.8, -13.2, 64.8, 44.4, -7.6, -21.8, -8.1, -7.0, -0.6, 9.0, 9.3, 20.9, 0.2, 7.6, 0.4, 2.6, 26.3, 29.2, 66.8, 35.4, 6.0, 21.0, 36.7, 12.0, 9.2, -9.4], [-14.8, 9.3, -9.4, -4.2, 73.8, 38.2, -4.6, -20.6, -8.4, 1.8, -7.0, 10.9, 9.8, 25.2, 0.4, 8.4, 1.4, -2.3, 18.8, 22.3, 64.4, 36.8, 5.3, 24.1, 38.6, 16.5, 12.4, -0.5], [35.8, -12.4, -8.6, 6.8, 67.5, 31.8, -8.4, -20.8, -6.8, 10.9, -12.7, 10.8, 13.6, 16.5, 1.4, 7.8, -1.8, -6.6, 13.4, 12.8, 62.2, 36.0, 7.4, 23.4, 42.2, 28.8, 18.0, 5.4], [31.8, -14.0, -6.6, 3.4, 72.8, 37.4, -10.0, -20.1, -7.2, 10.6, -15.1, 1.7, 13.6, 1.9, 6.2, 12.1, -4.8, -9.6, 10.2, 5.2, 64.2, 34.2, 9.1, 23.3, 41.6, 36.0, 24.4, 0.7]], "G": [[54.2, 34.6, -17.5, -25.6, 5.1, -1.4, 67.1, -8.3, 20.0, -15.2, 3.4, 16.4, 16.6, 11.6, 20.2, 4.2, 9.9, 0.1, -2.6, 10.0, 17.0, 2.6, -3.0, -5.0, 16.6, -4.8, -2.1, -17.0], [49.3, 19.8, -13.7, -20.3, 2.2, 3.0, 42.6, -11.4, 14.1, -4.9, 10.0, 17.5, 14.0, -4.6, 14.4, 9.9, -4.6, -0.5, -3.6, 12.5, 14.4, 3.6, -4.6, -6.2, 13.2, 4.0, -5.3, -17.1], [37.2, 4.7, -8.6, -18.4, -5.6, 0.3, 14.4, -10.2, 15.7, -8.9, 9.8, 14.2, 17.4, 4.2, 14.6, 6.4, -2.4, -0.3, -0.1, 11.6, 15.4, 3.8, -5.3, -4.5, 12.0, 2.4, -3.2, -13.0], [20.0, -2.0, -11.2, -21.4, -4.2, -3.3, 2.2, -9.6, 18.2, -8.6, 13.2, 16.4, 21.5, 11.2, 12.4, 8.2, 4.0, -3.4, 3.8, 10.0, 16.2, 3.9, -4.6, -4.9, 11.9, -1.2, -3.8, -13.0], [1.0, 0.6, -11.0, -27.4, 5.3, -3.2, 1.0, -8.4, 18.6, -7.0, 16.4, 17.8, 20.0, 14.6, 14.8, 7.7, 7.3, -0.7, 9.2, 9.8, 17.8, 3.2, -3.6, -5.4, 11.0, -7.4, -4.5, -12.8], [-15.4, -1.6, -9.8, -30.5, 9.2, 1.7, 0.2, -6.5, 16.4, -3.8, 17.2, 18.6, 21.2, 16.6, 14.8, 10.8, 10.3, -4.0, 11.8, 9.4, 18.5, 2.7, -5.4, -5.4, 9.3, -9.4, -4.8, -12.1], [-32.0, -4.0, -7.5, -23.8, 10.5, 1.6, -4.8, -4.6, 15.2, 0.0, 14.5, 19.4, 20.8, 21.9, 14.4, 12.6, 12.0, -6.2, 5.9, 8.4, 18.6, 5.6, -7.3, -2.4, 9.8, -6.4, -3.5, -9.8], [5.6, -24.8, -7.9, -19.2, 7.6, -2.4, -5.3, -5.4, 15.8, 3.8, 7.0, 20.0, 19.4, 18.8, 10.7, 13.0, 13.8, -9.0, 2.4, 3.2, 19.2, 5.7, -6.8, -1.5, 11.8, 5.2, -0.2, -7.4], [4.4, -27.4, -6.0, -21.4, 9.6, 2.6, -4.7, -7.0, 14.9, 3.9, 5.4, 20.3, 17.1, 15.2, 8.6, 16.6, 15.7, -9.6, 2.5, 1.0, 21.0, 7.5, -5.5, -0.9, 12.3, 12.6, 3.9, -12.3]]};
+const PANELS = [
+  {key: "A", title: "A · attn2 + ff 평균 (누적 제거)"},
+  {key: "D", title: "D · attn2 + ff 평균 (누적 제거)"},
+  {key: "G", title: "G · attn2 + ff 평균 (누적 제거)"},
+];
+const NL = 28;
+
+function mixDiv(v, max) {
+  const t = Math.min(Math.abs(v) / max, 1);
+  const hue = v >= 0 ? "var(--pos)" : "var(--neg)";
+  return `color-mix(in oklab, ${hue} ${Math.round(t * 100)}%, var(--mid))`;
+}
+
+function drawText() {
+  const el = document.getElementById("chart-text");
+  const CW = 26, CH = 22, GAP = 30, LEFT = 60, TOP = 24, MAX = 0.3;
+  const kinds = [["K", "K · 키 투영"], ["V", "V · 값 투영"]];
+  const H = TOP + kinds.length * (3 * CH + GAP) + 14, W = LEFT + NL * CW + 26;
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img"
+      aria-label="프롬프트만으로 계산한 layer별 factor 응집">`;
+  s += `<g fill="var(--ink-3)" font-size="9.5" text-anchor="middle">`;
+  for (let l = 0; l < NL; l += 2)
+    s += `<text x="${LEFT + l * CW + CW / 2}" y="${TOP - 9}">${l}</text>`;
+  s += `</g>`;
+  kinds.forEach(([k, label], ki) => {
+    const y0 = TOP + ki * (3 * CH + GAP);
+    s += `<text x="0" y="${y0 - 7}" font-size="10.5" font-weight="600"
+           letter-spacing="0.05em" fill="var(--ink-2)">${label}</text>`;
+    ["A", "G", "D"].forEach((f, fi) => {
+      const y = y0 + fi * CH;
+      s += `<text x="${LEFT - 10}" y="${y + CH / 2 + 4}" font-size="11"
+             text-anchor="end" fill="var(--ink)">${f}</text>`;
+      TXT.KV[k][f].forEach((v, l) => {
+        s += `<rect x="${LEFT + l * CW + 1}" y="${y + 1}" width="${CW - 2}"
+               height="${CH - 2}" rx="2" fill="${mixDiv(v, MAX)}"
+               stroke="var(--rule)" stroke-width="0.5">
+               <title>${f} · ${k}${l} · ${v > 0 ? "+" : ""}${v.toFixed(3)}</title></rect>`;
+      });
+    });
+  });
+  s += `<text x="${LEFT}" y="${H - 2}" font-size="9.5" fill="var(--ink-3)">transformer block →</text>`;
+  el.innerHTML = s + `</svg>`;
+  document.getElementById("ramp-txt").style.background =
+    `linear-gradient(to right, ${mixDiv(-0.3, 0.3)}, var(--mid), ${mixDiv(0.3, 0.3)})`;
+}
+
+function draw() {
+  const el = document.getElementById("chart-steplayer");
+  const steps = FIG.steps, CW = 26, CH = 20, LEFT = 74, TOP = 24, GAP = 34;
+  const H = TOP + PANELS.length * (steps.length * CH + GAP) + 14;
+  const W = LEFT + NL * CW + 26;
+  const MAX = 80;
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img"
+      aria-label="factor 별 layer x timestep 마진">`;
+  s += `<g fill="var(--ink-3)" font-size="9.5" text-anchor="middle">`;
+  for (let l = 0; l < NL; l += 2)
+    s += `<text x="${LEFT + l * CW + CW / 2}" y="${TOP - 9}">${l}</text>`;
+  s += `</g>`;
+  PANELS.forEach((p, pi) => {
+    const y0 = TOP + pi * (steps.length * CH + GAP);
+    s += `<text x="0" y="${y0 - 7}" font-size="10.5" font-weight="600"
+           letter-spacing="0.05em" fill="var(--ink-2)">${p.title}</text>`;
+    FIG[p.key].forEach((row, si) => {
+      const y = y0 + si * CH;
+      s += `<text x="${LEFT - 10}" y="${y + CH / 2 + 4}" font-size="10"
+             text-anchor="end" fill="var(--ink-3)">step ${steps[si]}</text>`;
+      row.forEach((v, l) => {
+        s += `<rect x="${LEFT + l * CW + 1}" y="${y + 1}" width="${CW - 2}"
+               height="${CH - 2}" rx="2" fill="${mixDiv(v, MAX)}"
+               stroke="var(--rule)" stroke-width="0.5">
+               <title>${p.key} · block ${l} · step ${steps[si]} · ${v > 0 ? "+" : ""}${v.toFixed(0)}%</title></rect>`;
+        if (Math.abs(v) >= 45)
+          s += `<text x="${LEFT + l * CW + CW / 2}" y="${y + CH / 2 + 4}" font-size="8.5"
+                 text-anchor="middle" fill="var(--surface-raise)"
+                 pointer-events="none">${v.toFixed(0)}</text>`;
+      });
+    });
+  });
+  s += `<text x="${LEFT}" y="${H - 2}" font-size="9.5" fill="var(--ink-3)">transformer block →</text>`;
+  el.innerHTML = s + `</svg>`;
+  document.getElementById("ramp-div").style.background =
+    `linear-gradient(to right, ${mixDiv(-80, 80)}, var(--mid), ${mixDiv(80, 80)})`;
+}
+draw();
+drawText();
+</script>

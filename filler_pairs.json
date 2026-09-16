@@ -1,0 +1,17 @@
+{
+ "note": "Filler control for the geometry re-conditioning. Same construction as g_pairs.json -- base caption plus a phrase, swapped for a word-count-matched partner -- but the phrases say nothing about the road, the scene or the motion. They describe the recording itself, so any change they produce in the video is what a prompt edit of that length and shape costs on its own. Pair i is length-matched to pair i of g_pairs.json (9, 8, 9, 9, 8, 8 words), so the two sets are compared cell for cell.",
+ "pairs": [
+  ["and the footage was recorded with a mounted camera",
+   "and the clip was captured by an onboard device"],
+  ["and the video shows the usual daily commute",
+   "and the footage covers a routine short trip"],
+  ["as the recording continues through the whole short sequence",
+   "as the capture proceeds across the entire brief segment"],
+  ["and the camera keeps rolling for the full duration",
+   "and the sensor keeps logging until the final moment"],
+  ["and the data was stored for later review",
+   "and the frames were saved for future analysis"],
+  ["and the scene was logged by the system",
+   "and the moment was noted in the record"]
+ ]
+}

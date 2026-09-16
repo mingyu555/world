@@ -1,0 +1,15 @@
+# Run outputs: 1.6 GB of generated videos, latents, adapters and probe JSON.
+# Every number quoted in METHOD.md is reproducible from the scripts, so the
+# artefacts stay on the machine.
+runs/
+runs_train/
+runs_eval/
+*.log
+
+# Adapters and checkpoints
+*.pt
+*.safetensors
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

@@ -1,0 +1,29 @@
+{
+ "note": "Geometry re-conditioned as *future* road topology. The dataset's own G phrases describe the geometry visible right now ('right lane of a two-lane road'), which the conditioning image already fixes -- the pipeline overwrites the first latent frame with that image at every step, so a caption claiming a different lane count contradicts what is on screen and the model cannot honour it. Dynamics escaped this because a single frame cannot say whether the car will accelerate. These pairs give geometry the same escape: road topology that is out of frame and only arrives as the clip plays. Each pair is word-count matched.",
+ "pairs": [
+  [
+   "and the road curves sharply to the left ahead",
+   "and the road stays completely straight for a while"
+  ],
+  [
+   "and reaches a busy intersection with traffic lights",
+   "and continues past open fields with no crossings"
+  ],
+  [
+   "as the lanes merge into a single narrow lane",
+   "as the lanes split into three separate wide lanes"
+  ],
+  [
+   "and the road bends right around a tall building",
+   "and the road drops down into a long tunnel"
+  ],
+  [
+   "and climbs steeply over a high arched bridge",
+   "and descends into a wide flat open plaza"
+  ],
+  [
+   "and the lane narrows between two concrete barriers",
+   "and the lane opens onto a wide plaza"
+  ]
+ ]
+}
